@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+        .container button:disabled{
+            background-color: green;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 40%;
+        }
+        .container button{
+            background-color: rgba(0, 255, 0, 0.486);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 45%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/images/logo2.png" alt="logo" height="33px" width="120px">
+        </div>
+        <div class="nav-items">
+            <a href="#"><i class="fa-solid fa-user-group"></i>About</a>
+            <a href="#"><i class="fa-solid fa-bug"></i>Big Report</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i>Contact</a>
+        </div>
+        <form action="#">
+            <input type="search" class="search-data" placeholder="search" required>
+            <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </nav>
+    <div class="container">
+        <a href="Videos/videoplayback.mp4" target="_parent">
+            <button id="download" download="Videos/videoplayback" 
+                    disabled>Download
+            </button>
+        </a>
+    </div>
+    <script>
+        var downloadBtn = document.getElementById("download")
+        var counter = 30;
+        downloadBtn.innerHTML = "Please wait for 30 seconds.";
+        
+        var id;
+        id = setInterval(function(){
+            counter--;
+            if(counter < 0){
+                downloadBtn.innerHTML = "Download";
+                downloadBtn.removeAttribute("disabled");
+                clearInterval(id)
+            }
+            else{
+                downloadBtn.innerHTML = "Please wait for " + counter.toString() + " seconds.";
+            }
+        },1000)
+    </script>
+</body>
+</html>
